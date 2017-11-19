@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Результат поиска книг
+{% endblock %}
+
+{% block content %}
+    <p><a href="{% url 'add_book' %}">Добавить</a> | <a href="{% url 'update_book' %}">Изменить</a> | <a href="{% url 'delete_book' %}">Удалить</a></p>
+    <p>Результаты поиска по {{type}}={{name}}:</p>
+    {% if books %}
+        <table border="1">
+            <tr><th>Идентификатор</th><th>Название</th><th>Автор</th>
+            {% for book in books %}
+                {% if book %}
+                    <tr><td>{{ book.id }}</td><td>{{ book.book_name }}</td><td>{{ book.author.author_name }}</td>
+                {% endif %}
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Книги не найдены.</p>
+    {% endif %}
+{% endblock %}

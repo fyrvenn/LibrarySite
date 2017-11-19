@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Авторы
+{% endblock %}
+
+{% block content %}
+    <p>Авторы</p>
+    <p> </p>
+    <p><a href="{% url 'add_author' %}">Добавить</a> | <a href="{% url 'update_author' %}">Изменить</a> | <a href="{% url 'delete_author' %}">Удалить</a></p>
+    {% if authors %}
+        <table border="1">
+            <tr><th>Идентификатор</th><th>Имя</th>
+            {% for author in authors %}
+                {% if author %}
+                    <tr><td>{{ author.id }}</td><td>{{ author.author_name }}</td>
+                {% endif %}
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Список авторов пуст.</p>
+    {% endif %}
+{% endblock %}

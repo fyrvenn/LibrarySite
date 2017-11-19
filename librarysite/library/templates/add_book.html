@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Добавление книги
+{% endblock %}
+
+{% block content %}
+
+    <form action="{% url 'add_book' %}" method="post">
+        <fieldset>
+            {% csrf_token %}
+            <p>Добавление книги</p>
+            <p> </p>
+            <p>Введите название:</p>
+            <textarea rows="4" cols="50" name="name"></textarea>
+
+            <p>Выберите автора:</p>
+            <select name="author_name">
+                {% for author in authors %}
+                    <option value="{{author.id}}" selected="selected">{{author.author_name}}</option>
+                {% endfor %}
+            </select>
+
+            <input type="submit" value="Добавить" />
+        </fieldset>
+    </form>
+{% endblock %}

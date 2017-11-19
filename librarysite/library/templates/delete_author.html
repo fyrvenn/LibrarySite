@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Удаление автора
+{% endblock %}
+
+{% block content %}
+
+    <form action="{% url 'delete_author' %}" method="post">
+        <fieldset>
+            {% csrf_token %}
+            <p>Удаление автора</p>
+            <p> </p>
+            <p>Выберите автора:</p>
+            <select name="id">
+                {% for author in authors %}
+                    <option value="{{author.id}}" selected="selected">{{author.author_name}}</option>
+                {% endfor %}
+            </select>
+            <p>Внимание! Все книги данного автора также удалятся из базы данных!</p>
+            <input type="submit" value="Удалить" />
+        </fieldset>
+    </form>
+{% endblock %}

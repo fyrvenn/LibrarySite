@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Обновление автора
+{% endblock %}
+
+{% block content %}
+
+    <form action="{% url 'update_author_func' author.id %}" method="post">
+        <fieldset>
+            {% csrf_token %}
+            <p>Обновление автора</p>
+            <p> </p>
+            <p>Измените имя:</p>
+            <textarea rows="4" cols="50" name="name">{{author.author_name}}</textarea>
+            <input type="submit" value="Обновить" />
+        </fieldset>
+    </form>
+{% endblock %}

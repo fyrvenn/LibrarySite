@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Обновление книги
+{% endblock %}
+
+{% block content %}
+
+    <form action="{% url 'update_book_func' book.id %}" method="post">
+        <fieldset>
+            {% csrf_token %}
+            <p>Обновление книги</p>
+            <p> </p>
+            <p>Измените название:</p>
+            <textarea rows="4" cols="50" name="name">{{book.book_name}}</textarea>
+            <p>Выберите автора:</p>
+            <select name="author">
+                {% for author in authors %}
+                    {% if author.id == book.author.id %}
+                        <option value="{{author.id}}" selected="selected">{{author.author_name}}</option>
+                    {% else %}
+                        <option value="{{author.id}}">{{author.author_name}}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            <input type="submit" value="Обновить" />
+        </fieldset>
+    </form>
+{% endblock %}

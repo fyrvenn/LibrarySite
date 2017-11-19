@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Выбор автора для обновления
+{% endblock %}
+
+{% block content %}
+
+    <form action="{% url 'update_author' %}" method="post">
+        <fieldset>
+            {% csrf_token %}
+            <p>Выбор автора для обновления</p>
+            <p> </p>
+            <p>Выберите автора:</p>
+            <select name="id">
+                {% for author in authors %}
+                    <option value="{{author.id}}" selected="selected">{{author.author_name}}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Обновить" />
+        </fieldset>
+    </form>
+{% endblock %}

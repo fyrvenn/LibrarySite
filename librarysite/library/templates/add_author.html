@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Добавление автора
+{% endblock %}
+
+{% block content %}
+
+    <form action="{% url 'add_author' %}" method="post">
+        <fieldset>
+            {% csrf_token %}
+            <p>Добавление автора</p>
+            <p> </p>
+            <p>Введите имя:</p>
+            <textarea rows="4" cols="50" name="name"></textarea>
+
+            <input type="submit" value="Добавить" />
+        </fieldset>
+    </form>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Поиск книги
+{% endblock %}
+
+{% block content %}
+
+    <form action="{% url 'search_book' %}" method="post">
+        <fieldset>
+            {% csrf_token %}
+            <p>Поиск книги</p>
+            <p> </p>
+            <p>Выберите вид поиска:</p>
+            <div>
+                <input type="radio" id="book" name="search_type" value="book" checked>
+                <label for="book">По названию</label>
+                <input type="radio" id="author" name="search_type" value="author">
+                <label for="author">По автору</label>
+            </div>
+
+            <p>Введите название книги или имя автора:</p>
+            <textarea rows="4" cols="50" name="name"></textarea>
+
+            <input type="submit" value="Найти" />
+        </fieldset>
+    </form>
+{% endblock %}
