@@ -10,8 +10,6 @@ class Author(models.Model):
     def __unicode__(self):
         return self.author_name
 
-"""источник денег - зарплатная карта,
-   вебмани, наличные и т.д."""
 class Book(models.Model):
     book_name = models.CharField(max_length = 50)
     author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='books')
